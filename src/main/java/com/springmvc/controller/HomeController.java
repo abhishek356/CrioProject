@@ -1,11 +1,13 @@
 package com.springmvc.controller;
 
+import java.lang.reflect.Field;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -55,5 +57,27 @@ public class HomeController {
 		}
 		{
 		return "success";}
+	}
+	
+	@RequestMapping(path = "/updateDetails/{email}")
+	public String updateDetails(@PathVariable String email)
+	{
+		System.out.println("Inside UpdateDetails "+email);
+		
+		System.out.println(email.getClass().getSimpleName());
+		
+		return "updateDetails";
+		
+	}
+	
+	@RequestMapping(path = "/deleteDetails/{email}")
+	public String deleteDetails(@PathVariable String email)
+	{
+		System.out.println("Inside UpdateDetails "+email);
+		
+		System.out.println(email.getClass().getSimpleName());
+		
+		return "updateDetails";
+		
 	}
 }

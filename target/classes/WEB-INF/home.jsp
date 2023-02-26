@@ -1,5 +1,4 @@
-
-   <%@ page language="java" contentType="text/html; charset=UTF-8"
+ <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" isELIgnored = "false"%> 
 
     <%@ taglib  uri = "http://java.sun.com/jsp/jstl/core"  prefix = "c"%>
@@ -26,6 +25,32 @@
     document.submit();
     }
     </script>
+    <script type = "text/javascript">
+    function Update()
+    {
+    	
+    	window.alert(document.getElementById("update").value);
+    	var email = document.getElementById("update").value;
+    	console.log(email);
+    	document.forms[0].action = "updateDetails/"+email;
+    	document.submit();
+    }
+    </script>
+    
+    <script type ="text/javascript">
+    
+    function Delete()
+    {
+    	
+    	var email = document.getElementById("delete").value;
+    	if(window.confirm(email))
+    		{
+    		document.forms[0].action = "deleteDetails/"+email;
+    		document.submit();
+    		}
+    }
+    </script>
+
     
     
     
@@ -55,7 +80,9 @@
                     <td><c:out value="${customer.getFirstName()}" /></td>
                     <td><c:out value="${customer.getLastName()}" /></td>
                     <td><c:out value="${customer.getEmail()}" /></td>
-                    <td><a href="#" value="Update">Update</a>|<a href="#" value="Delete">Delete</a></td>
+                    <td><button style="btn btn-danger" id ="update" type = "link" onclick="Update()" value="<c:out value='${customer.getEmail()}'/>">Update</button> |
+                   <button style="btn btn-danger" id ="delete" type = "link" onclick="Delete()" value="<c:out value='${customer.getEmail()}'/>">Delete</button></td>
+                    
                 </tr>
             </c:forEach>
   </tbody>
