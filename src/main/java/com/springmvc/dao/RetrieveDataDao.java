@@ -8,18 +8,8 @@ public interface RetrieveDataDao {
 
 	
 	
+public  List<Customer> retrieveData();
 	
-	
-	
-	
-	
-	
-	
-	
-	
-
-	public  List<Customer> retrieveData();
-	public  boolean saveCustomer(Customer customer);
 }
 
 

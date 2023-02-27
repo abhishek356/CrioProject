@@ -11,5 +11,5 @@ public interface RetrieveData {
 	
 	
 	public  List<Customer> retrieveData();
-	public  boolean saveCustomer(Customer customer);
+//	public  boolean saveCustomer(Customer customer);
 }

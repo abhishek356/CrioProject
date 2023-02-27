@@ -15,7 +15,7 @@ import org.springframework.stereotype.Component;
 import com.springmvc.model.Customer;
 
 @Component
-public class RetrieveData implements RetrieveDataDao {
+public class RetrieveDataDaoImplementation implements RetrieveDataDao {
 
 	
 	
@@ -50,16 +50,6 @@ public class RetrieveData implements RetrieveDataDao {
 		return customerList;
 	}
 
-	@Override
-	public boolean saveCustomer(Customer customer) {
-		// TODO Auto-generated method stub
-		String query = "Insert into customer values (?,?,?)";
-	int n = 	jdbcTemplate.update(query,customer.getFirstName(),customer.getLastName(),customer.getEmail());
-		System.out.println(n);
-		if(n>0)
-		return true;
-		
-		return false;
-	}
+
 
 }

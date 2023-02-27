@@ -1,27 +1,31 @@
 package com.springmvc.service;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.springmvc.dao.RetrieveDataDao;
 import com.springmvc.model.Customer;
+import com.springmvc.dao.saveData;
+
+
 
 @Component
-public class RetrieveDataImplementation implements RetrieveData{
+public class saveDataServiceImplementation implements saveDataService{
 
 	
 	@Autowired
-	RetrieveDataDao retrieve;
+	saveData saveData;
+	
+	
+	
+	
+	
 	
 	@Override
-	public List<Customer> retrieveData() {
+	public boolean saveCustomer(Customer customer) {
 		// TODO Auto-generated method stub
-		return retrieve.retrieveData();
+		
+		return saveData.saveCustomer(customer);
+		
 	}
-
 	
-	
-
 }

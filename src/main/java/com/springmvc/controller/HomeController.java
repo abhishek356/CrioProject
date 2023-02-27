@@ -1,5 +1,6 @@
 package com.springmvc.controller;
 
+import com.springmvc.service.saveDataService;
 import java.lang.reflect.Field;
 import java.util.List;
 
@@ -13,12 +14,16 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.springmvc.dao.RetrieveDataDao;
 import com.springmvc.model.Customer;
 import com.springmvc.service.RetrieveData;
 
 @Controller
 public class HomeController {
 
+	
+	@Autowired
+	saveDataService saveData;
 	
 	@Autowired
 	RetrieveData retrieve;
@@ -33,11 +38,12 @@ public class HomeController {
 	String addcustomer=	Addcustomer;
 		
 	System.out.println(retrieve.retrieveData());
-		if(addcustomer.equals("addcustomer") )
-		{
-			//return "redirect:addCustomer";
-		}
-		//System.out.println("Inside home controller");
+		
+//	if(addcustomer.equals("addcustomer") )
+//		{
+//			//return "redirect:addCustomer";
+//		}
+//		//System.out.println("Inside home controller");
 		return modelAndview;
 	}
 	
@@ -51,12 +57,13 @@ public class HomeController {
 	public String saveDetails(@ModelAttribute  Customer customer )
 	{
 		System.out.println(customer.toString());
-		if(retrieve.saveCustomer(customer))
+		if(saveData.saveCustomer(customer))
+		{
+		return "success";
+		}
 		{
 		return "error";
 		}
-		{
-		return "success";}
 	}
 	
 	@RequestMapping(path = "/updateDetails/{email}")
